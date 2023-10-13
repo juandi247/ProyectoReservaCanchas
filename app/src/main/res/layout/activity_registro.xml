@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroActivity">
+
+    <Button
+        android:id="@+id/btn_VolverInicioSesion"
+        android:layout_width="186dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="624dp"
+        android:backgroundTint="@color/color_botones_verdoso"
+        android:fontFamily="@font/inika_bold"
+        android:text="Volver a Inicio Sesion"
+        android:textColorLink="@color/color_botones_verdoso"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_terminarRegistro"
+        android:layout_width="186dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/color_botones_verdoso"
+        android:fontFamily="@font/inika_bold"
+        android:text="Registro"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_contrasenaRegistro" />
+
+    <EditText
+        android:id="@+id/et_usuarioRegistro"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="384dp"
+        android:ems="10"
+        android:fontFamily="@font/inika_bold"
+        android:hint="Usuario"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/inika_bold"
+        android:text="FORMULARIO DE REGISTRO"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_contrasenaRegistro"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:fontFamily="@font/inika_bold"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_usuarioRegistro" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="409dp"
+        android:layout_height="96dp"
+        android:background="@drawable/rounded_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="94dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="8dp"
+
+            android:src="@drawable/icono_titulo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="94dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+
+        android:src="@drawable/icono_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="323dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="28dp"
+        android:text="ONCE-SINTETICA"
+        android:textColor="#F3F3F3"
+        android:textSize="33dp"
+        android:textStyle="bold"
+        app:fontFamily="@font/black_ops_one"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_nombre"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="52dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:fontFamily="@font/inika_bold"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/et_apellido"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="124dp"
+        android:ems="10"
+        android:hint="Apellido"
+        android:fontFamily="@font/inika_bold"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
