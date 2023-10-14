@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "392196156907",
+    "project_id": "canchaappestebanjuandi",
+    "storage_bucket": "canchaappestebanjuandi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392196156907:android:de0566455ed363c1893dae",
+        "android_client_info": {
+          "package_name": "com.juandiegodiaz.appreservacancha"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7upGSxtvsFtk5XJOnVyuOPqmCoQpBzhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
