@@ -47,7 +47,11 @@ private FirebaseFirestore db;
                 if (usuario.isEmpty() || contraseña.isEmpty() || nombre.isEmpty() || apellido.isEmpty() ) {
 
                     Toast.makeText(RegistroActivity.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else if (contraseña.length() < 5) {
+                    Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos 5 caracteres", Toast.LENGTH_SHORT).show();
+                }
+                else {
                     try {
 
 
@@ -69,8 +73,10 @@ private FirebaseFirestore db;
                         db.collection("Usuarios")
                                 .add(userData)
                                 .addOnSuccessListener(documentReference -> {
-                                    Toast.makeText(RegistroActivity.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
-                                    // Redirigir a otra actividad o realizar alguna otra acción aquí
+                                    Toast.makeText(RegistroActivity.this, "Usuario registrado con éxito, Inicia sesion ahora", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+
                                 })
                                 .addOnFailureListener(e -> {
                                     Toast.makeText(RegistroActivity.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();

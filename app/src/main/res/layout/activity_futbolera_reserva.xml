@@ -5,146 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo_app"
-
-    tools:context=".InicioActivity">
+    tools:context=".FutboleraReservaActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="360dp"
-        android:layout_height="362dp"
-        android:layout_marginTop="256dp"
+        android:layout_width="342dp"
+        android:layout_height="475dp"
+        android:layout_marginTop="176dp"
         android:background="@drawable/rounded_cosoreserva"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btn_reservaFutbolera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:backgroundTint="@color/color_botones_verdoso"
-            android:text="RESERVAR"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
+        <CalendarView
+            android:id="@+id/cv_futbolera"
+            android:layout_width="333dp"
+            android:layout_height="217dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_calendar"
+            android:minDate="10/20/2023"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.933"
+            app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_reservaPicadelly"
+            android:id="@+id/btn_reserva_futbolera_7pm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
-            android:backgroundTint="@color/color_botones_verdoso"
-            android:text="RESERVAR"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.933"
-            app:layout_constraintStart_toStartOf="parent"
-            app:rippleColor="@color/color_botones_verdoso" />
+            android:text="Button"
+            tools:layout_editor_absoluteX="229dp"
+            tools:layout_editor_absoluteY="254dp" />
 
         <Button
-            android:id="@+id/btn_reservaNoviesota"
+            android:id="@+id/btn_reserva_futbolera_8pm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
-            android:backgroundTint="@color/color_botones_verdoso"
-            android:text="RESERVAR"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.933"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:rippleColor="@color/color_botones_verdoso" />
+            android:text="Button"
+            tools:layout_editor_absoluteX="229dp"
+            tools:layout_editor_absoluteY="320dp" />
+
+        <Button
+            android:id="@+id/btn_reserva_futbolera_9pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            tools:layout_editor_absoluteX="229dp"
+            tools:layout_editor_absoluteY="396dp" />
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="207dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="60dp"
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/inika_bold"
-            android:text="CANCHA FUTBOLERA"
-            android:textAlignment="center"
+            android:text="7:00 a 8:00pm"
             android:textColor="#000000"
             android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/btn_reservaFutbolera"
-            app:layout_constraintHorizontal_bias="0.157"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
-            android:text="Via Ruitoque-Calle 313"
-            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.169"
+            app:layout_constraintHorizontal_bias="0.197"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:layout_editor_absoluteY="268dp" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
-            android:text="Via Provenza-calle102"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.18"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="212dp"
-            android:text="Via Giron-Puente el bueno "
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.194"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="168dp"
             android:fontFamily="@font/inika_bold"
-            android:text="CANCHA NOVIESOTA"
-            android:textAlignment="center"
+            android:text="9:00 a 10:00pm"
             android:textColor="#000000"
             android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/btn_reservaNoviesota"
-            app:layout_constraintHorizontal_bias="0.272"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.197"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:layout_editor_absoluteY="407dp" />
 
         <TextView
-            android:id="@+id/textView8"
-            android:layout_width="205dp"
-            android:layout_height="35dp"
-            android:layout_marginBottom="48dp"
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/inika_bold"
-            android:text="CANCHA PICADELLY"
+            android:text="8:00 a 9:00pm"
             android:textColor="#000000"
             android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_reservaPicadelly"
-            app:layout_constraintHorizontal_bias="0.38"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.197"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="333dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,22 +137,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="363dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="132dp"
-        android:fontFamily="@font/inika_bold"
-        android:text="¡Elige la cancha que deseas reservar!"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="28dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.354"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="409dp"
@@ -258,5 +191,20 @@
             app:tint="@color/tint_bottom_sin_uso" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/inika_bold"
+        android:text="Cancha La Futbolera"
+        android:textColor="#000000"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
