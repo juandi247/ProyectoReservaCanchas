@@ -87,6 +87,22 @@
 
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="323dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:text="ONCE-SINTETICA"
+            android:textColor="#F3F3F3"
+            android:textSize="33dp"
+            android:textStyle="bold"
+
+            app:fontFamily="@font/black_ops_one"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.034"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="94dp"
@@ -96,7 +112,6 @@
             android:src="@drawable/icono_titulo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -111,22 +126,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
 
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="323dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="28dp"
-        android:text="ONCE-SINTETICA"
-        android:textColor="#F3F3F3"
-        android:textSize="33dp"
-        android:textStyle="bold"
-        app:fontFamily="@font/black_ops_one"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.046"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText

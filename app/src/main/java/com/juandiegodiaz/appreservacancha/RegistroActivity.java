@@ -3,7 +3,6 @@ package com.juandiegodiaz.appreservacancha;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.FirebaseApp;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -44,11 +43,19 @@ private FirebaseFirestore db;
                 String nombre = nombreEditText.getText().toString();
                 String apellido = apellidoEditText.getText().toString();
 
+
                 if (usuario.isEmpty() || contraseña.isEmpty() || nombre.isEmpty() || apellido.isEmpty() ) {
 
                     Toast.makeText(RegistroActivity.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
+
+
+                        db.collection("Usuarios")
+                        .whereEqualTo("usuario", usuario)
+                        .get()
+                        .addOnSuccessListener(queryDocumentSnapshots -> {
+                      if (queryDocumentSnapshots.isEmpty()) {
                         // Crear un nuevo documento en la colección "usuarios"
                         Map<String, Object> userData = new HashMap<>();
                         userData.put("usuario", usuario);
@@ -67,6 +74,11 @@ private FirebaseFirestore db;
                                 })
                                 .addOnFailureListener(e -> {
                                     Toast.makeText(RegistroActivity.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
+                                });
+                                    } else {
+                                        // El nombre de usuario ya está en uso
+                                        Toast.makeText(RegistroActivity.this, "El nombre de usuario ya está en uso. Por favor, elige otro.", Toast.LENGTH_SHORT).show();
+                                    }
                                 });
                     } catch (Exception e) {
                         Toast.makeText(RegistroActivity.this, "Error inesperado: " + e.getMessage(), Toast.LENGTH_SHORT).show();

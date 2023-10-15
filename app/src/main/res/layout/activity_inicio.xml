@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_app"
+
+    tools:context=".InicioActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="360dp"
+        android:layout_height="362dp"
+        android:layout_marginTop="256dp"
+        android:background="@drawable/rounded_cosoreserva"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="409dp"
+        android:layout_height="96dp"
+        android:background="@drawable/rounded_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="94dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="8dp"
+
+            android:src="@drawable/icono_titulo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="323dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:text="ONCE-SINTETICA"
+            android:textColor="#F3F3F3"
+            android:textSize="33dp"
+            android:textStyle="bold"
+
+            app:fontFamily="@font/black_ops_one"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.034"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="363dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="116dp"
+        android:fontFamily="@font/inika_bold"
+        android:text="¡Elige la cancha que deseas reservar!"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="34dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="69dp"
+        android:background="@drawable/rounded_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton8"
+            android:layout_width="76dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="Boton Pantalla de inicio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/reserva"
+            app:tint="@color/tint_bottom_sin_uso" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="99dp"
+            android:layout_height="72dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="Ver reservas"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/hogar"
+            tools:layout_editor_absoluteY="-2dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="76dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="#00FFFFFF"
+            android:tint="@color/tint_bottom_sin_uso"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.885"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/profile"
+            android:contentDescription="boton perfil"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
