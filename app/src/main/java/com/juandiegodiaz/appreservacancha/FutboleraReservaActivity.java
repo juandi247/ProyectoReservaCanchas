@@ -90,102 +90,105 @@ public class FutboleraReservaActivity extends AppCompatActivity {
 
     private void verificarDisponibilidad(String fecha, String hora) {
         // Referencia a la colección de fechas
+        SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        String usuario = sharedPreferences.getString("usuario", "UsuarioPredeterminado");
 
-
+        DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
         CollectionReference fechasCollection = db.collection("Canchas").document("Cancha La Futbolera").collection("Fechas");
 
-        // Obtén el documento de la fecha seleccionada
-        DocumentReference fechaDoc = fechasCollection.document(fecha);
-
-        fechaDoc.get()
+        userDocRef.get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
+                        Boolean reservaActiva = documentSnapshot.getBoolean("reserva activa");
+                        if (reservaActiva != null && reservaActiva) {
+                            // El usuario ya tiene una reserva activa, muestra un mensaje y no continúes
+                            Toast.makeText(FutboleraReservaActivity.this, "Ya tienes una reserva activa. No puedes reservar otra.", Toast.LENGTH_SHORT).show();
+                        } else {
 
-                        String disponibilidad = documentSnapshot.getString(hora);
+                            // Obtén el documento de la fecha seleccionada
+                            DocumentReference fechaDoc = fechasCollection.document(fecha);
+                            fechaDoc.get()
+                                    .addOnSuccessListener(documentSnapshot1 -> {
+                                        if (documentSnapshot1.exists()) {
 
-                        if (disponibilidad != null) {
-                            if (disponibilidad.equals("Disponible")) {
-                                // La hora está disponible
-                                Log.d("Disponibilidad", "La hora " + hora + " está disponible en la fecha " + fecha);
+                                            String disponibilidad = documentSnapshot1.getString(hora);
 
-                                new AlertDialog.Builder(FutboleraReservaActivity.this)
-                                        .setTitle("Confirmar Reserva")
-                                        .setMessage("¿Deseas confirmar la reserva para las " + hora + " en la fecha " + fecha + "?")
-                                        .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
+                                            if (disponibilidad != null) {
+                                                if (disponibilidad.equals("Disponible")) {
+                                                    // La hora está disponible
+                                                    Log.d("Disponibilidad", "La hora " + hora + " está disponible en la fecha " + fecha);
 
-                                                DocumentReference fechaDoc = fechasCollection.document(fecha);
-                                                Map<String, Object> updateData = new HashMap<>();
-                                                updateData.put(hora, "Ocupado");
+                                                    new AlertDialog.Builder(FutboleraReservaActivity.this)
+                                                            .setTitle("Confirmar Reserva")
+                                                            .setMessage("¿Deseas confirmar la reserva para las " + hora + " en la fecha " + fecha + "?")
+                                                            .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int which) {
 
-                                                Intent intent = new Intent(FutboleraReservaActivity.this, InicioActivity.class);
-                                                startActivity(intent);
+                                                                    DocumentReference fechaDoc = fechasCollection.document(fecha);
+                                                                    Map<String, Object> updateData = new HashMap<>();
+                                                                    updateData.put(hora, "Ocupado");
 
-                                                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-                                                String usuario = sharedPreferences.getString("usuario", "UsuarioPredeterminado");
-                                                //actualizacion de la persona que reservo la cancha!!!
-                                                DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
-                                                userDocRef.update("hora reserva", hora);
-                                                userDocRef.update("nombre cancha reservada", "La futbolera");
-                                                userDocRef.update("reserva activa", true)
-                                                        .addOnSuccessListener(aVoid -> {
-                                                            // Éxito al actualizar el campo
-                                                            Log.d("Actualización", "Campo 'hora reserva' actualizado con éxito");
-                                                        })
-                                                        .addOnFailureListener(e -> {
-                                                            // Error al actualizar el campo
-                                                            Log.e("Actualización", "Error al actualizar campo 'hora reserva': " + e.getMessage());
-                                                        });
+                                                                    Intent intent = new Intent(FutboleraReservaActivity.this, InicioActivity.class);
+                                                                    startActivity(intent);
 
-
-
-
-
-                                                fechaDoc.set(updateData, SetOptions.merge())
-                                                        .addOnSuccessListener(aVoid -> {
-                                                            Toast.makeText(FutboleraReservaActivity.this, "Reserva confirmada", Toast.LENGTH_SHORT).show();
-
-                                                            // Cierra el cuadro de diálogo
-                                                        })
-                                                        .addOnFailureListener(e -> {
-                                                            Toast.makeText(FutboleraReservaActivity.this, "Error al confirmar la reserva", Toast.LENGTH_SHORT).show();
-
-                                                        });
+                                                                    //actualizacion de la persona que reservo la cancha!!!
+                                                                    DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
+                                                                    userDocRef.update("hora reserva", hora);
+                                                                    userDocRef.update("nombre cancha reservada", "La futbolera");
+                                                                    userDocRef.update("reserva activa", true);
+                                                                    userDocRef.update("fecha reserva",fecha )
+                                                                            .addOnSuccessListener(aVoid -> {
+                                                                                // Éxito al actualizar el campo
+                                                                                Log.d("Actualización", "Campo 'hora reserva' actualizado con éxito");
+                                                                            })
+                                                                            .addOnFailureListener(e -> {
+                                                                                // Error al actualizar el campo
+                                                                                Log.e("Actualización", "Error al actualizar campo 'hora reserva': " + e.getMessage());
+                                                                            });
 
 
+                                                                    fechaDoc.set(updateData, SetOptions.merge())
+                                                                            .addOnSuccessListener(aVoid -> {
+                                                                                Toast.makeText(FutboleraReservaActivity.this, "Reserva confirmada", Toast.LENGTH_SHORT).show();
+
+                                                                                // Cierra el cuadro de diálogo
+                                                                            })
+                                                                            .addOnFailureListener(e -> {
+                                                                                Toast.makeText(FutboleraReservaActivity.this, "Error al confirmar la reserva", Toast.LENGTH_SHORT).show();
+
+                                                                            });
+
+
+                                                                }
+                                                            })
+                                                            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    // Si el usuario cancela la confirmación, no haces nada o puedes mostrar un mensaje.
+                                                                    Toast.makeText(FutboleraReservaActivity.this, "Reserva cancelada", Toast.LENGTH_SHORT).show();
+                                                                    dialog.dismiss(); // Cierra el cuadro de diálogo
+                                                                }
+                                                            })
+                                                            .show();
+
+
+                                                } else {
+                                                    // La hora está ocupada
+                                                    Log.d("Disponibilidad", "La hora " + hora + " está ocupada en la fecha " + fecha);
+                                                    Toast.makeText(FutboleraReservaActivity.this, "La cancha esta ocupada en esta fehca, elige otra", Toast.LENGTH_SHORT).show();
+
+                                                }
                                             }
-                                        })
-                                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                // Si el usuario cancela la confirmación, no haces nada o puedes mostrar un mensaje.
-                                                Toast.makeText(FutboleraReservaActivity.this, "Reserva cancelada", Toast.LENGTH_SHORT).show();
-                                                dialog.dismiss(); // Cierra el cuadro de diálogo
-                                            }
-                                        })
-                                        .show();
+                                        } else {
+                                            // El documento de la fecha no existe
+                                            Log.d("Disponibilidad", "La fecha " + fecha + " no se puede reservar todavia");
+                                            Toast.makeText(FutboleraReservaActivity.this, "La fecha que elegiste, todavia no esta disponible para reserva :)", Toast.LENGTH_SHORT).show();
 
-
-
-
-
-
-
-                            } else {
-                                // La hora está ocupada
-                                Log.d("Disponibilidad", "La hora " + hora + " está ocupada en la fecha " + fecha);
-                                Toast.makeText(FutboleraReservaActivity.this, "La cancha esta ocupada en esta fehca, elige otra", Toast.LENGTH_SHORT).show();
-
-                            }
+                                        }
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        // Error al obtener el documento
+                                        Log.e("Disponibilidad", "Error al obtener la disponibilidad: " + e.getMessage());
+                                    });
                         }
-                    } else {
-                        // El documento de la fecha no existe
-                        Log.d("Disponibilidad", "La fecha " + fecha + " no se puede reservar todavia");
-                        Toast.makeText(FutboleraReservaActivity.this, "La fecha que elegiste, todavia no esta disponible para reserva :)", Toast.LENGTH_SHORT).show();
-
                     }
-                })
-                .addOnFailureListener(e -> {
-                    // Error al obtener el documento
-                    Log.e("Disponibilidad", "Error al obtener la disponibilidad: " + e.getMessage());
-                });
-    }}
+    });}}

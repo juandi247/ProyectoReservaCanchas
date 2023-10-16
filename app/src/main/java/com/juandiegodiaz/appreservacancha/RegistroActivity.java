@@ -45,7 +45,7 @@ private FirebaseFirestore db;
                 String contraseña = contrasenaET.getText().toString();
                 String nombre = nombreEditText.getText().toString();
                 String apellido = apellidoEditText.getText().toString();
-
+                String fecha="";
                 String cancha="";
                 String hora="";
                 if (usuario.isEmpty() || contraseña.isEmpty() || nombre.isEmpty() || apellido.isEmpty() ) {
@@ -80,6 +80,9 @@ private FirebaseFirestore db;
                                         userData.put("reserva activa", false);
                                         userData.put("nombre cancha reservada", cancha);
                                         userData.put("hora reserva", hora);
+                                        userData.put("fecha reserva", fecha);
+
+
 
                                         // Establecer los datos del usuario en el documento con el ID de usuario
                                         usuarioDocRef.set(userData)

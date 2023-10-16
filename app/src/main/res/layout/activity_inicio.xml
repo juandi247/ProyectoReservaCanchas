@@ -10,9 +10,10 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="360dp"
         android:layout_height="362dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="248dp"
         android:background="@drawable/rounded_cosoreserva"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
@@ -258,5 +259,20 @@
             app:tint="@color/tint_bottom_sin_uso" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_reservaActiva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:fontFamily="@font/inika_bold"
+        android:shadowColor="#FF0909"
+        android:text="¡Ya tienes tu reserva activa!"
+        android:textColor="#0055FF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

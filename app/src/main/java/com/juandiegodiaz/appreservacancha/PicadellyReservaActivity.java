@@ -90,15 +90,26 @@ public class PicadellyReservaActivity extends AppCompatActivity {
 
 
     private void verificarDisponibilidad(String fecha, String hora) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        String usuario = sharedPreferences.getString("usuario", "UsuarioPredeterminado");
+        DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
+        CollectionReference fechasCollection = db.collection("Canchas").document("Cancha Picadelly").collection("Fechas");
 
-        CollectionReference fechasCollection = db.collection("Canchas").document("Cancha Noviesota").collection("Fechas");
-        DocumentReference fechaDoc = fechasCollection.document(fecha);
+    userDocRef.get()
+      .addOnSuccessListener(documentSnapshot -> {
+           if (documentSnapshot.exists()) {
+               Boolean reservaActiva = documentSnapshot.getBoolean("reserva activa");
+                  if (reservaActiva != null && reservaActiva) {
+                     // El usuario ya tiene una reserva activa, muestra un mensaje y no continúes
+                     Toast.makeText(PicadellyReservaActivity.this, "Ya tienes una reserva activa. No puedes reservar otra.", Toast.LENGTH_SHORT).show();
+                        } else {
 
-        fechaDoc.get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
+               DocumentReference fechaDoc = fechasCollection.document(fecha);
+               fechaDoc.get()
+                .addOnSuccessListener(documentSnapshot1 -> {
+                    if (documentSnapshot1.exists()) {
 
-                        String disponibilidad = documentSnapshot.getString(hora);
+                        String disponibilidad = documentSnapshot1.getString(hora);
 
                         if (disponibilidad != null) {
                             if (disponibilidad.equals("Disponible")) {
@@ -121,8 +132,9 @@ public class PicadellyReservaActivity extends AppCompatActivity {
                                                 //actualizacion de la persona que reservo la cancha!!!
                                                 DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
                                                 userDocRef.update("hora reserva", hora);
-                                                userDocRef.update("nombre cancha reservada", "La futbolera");
-                                                userDocRef.update("reserva activa", true)
+                                                userDocRef.update("nombre cancha reservada", "Picadelly");
+                                                userDocRef.update("reserva activa", true);
+                                                userDocRef.update("fecha reserva",fecha )
                                                         .addOnSuccessListener(aVoid -> {
                                                             // Éxito al actualizar el campo
                                                             Log.d("Actualización", "Campo 'hora reserva' actualizado con éxito");
@@ -177,4 +189,6 @@ public class PicadellyReservaActivity extends AppCompatActivity {
                     // Error al obtener el documento
                     Log.e("Disponibilidad", "Error al obtener la disponibilidad: " + e.getMessage());
                 });
-    }}
+                  }
+           }
+      });}}

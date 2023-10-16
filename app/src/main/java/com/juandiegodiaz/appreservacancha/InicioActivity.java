@@ -9,9 +9,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class InicioActivity extends AppCompatActivity {
-
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -21,9 +26,33 @@ public class InicioActivity extends AppCompatActivity {
         Button btnNoviesota = findViewById(R.id.btn_reservaNoviesota);
        Button btnPicadelly = findViewById(R.id.btn_reservaPicadelly);
 
+        TextView txtReservaActiva = findViewById(R.id.tv_reservaActiva);
+        db = FirebaseFirestore.getInstance();
+
         SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         String usuario = sharedPreferences.getString("usuario", "UsuarioPredeterminado");
         String hora=sharedPreferences.getString("hora reserva","horaPre");
+        DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
+
+
+        userDocRef.get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        Boolean reservaActiva = documentSnapshot.getBoolean("reserva activa");
+                        if (reservaActiva != null && reservaActiva) {
+                            // El usuario tiene una reserva activa, muestra el mensaje
+                            txtReservaActiva.setVisibility(View.VISIBLE);
+                        } else {
+                            // No hay reserva activa, oculta el mensaje
+                            txtReservaActiva.setVisibility(View.GONE);
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.d("error mostrar texto", "no muestra texto de reserva "+ usuario);
+
+                });
+
 
 
         Log.d("Coso usuario", "el usuario de la sesion es "+ usuario);
