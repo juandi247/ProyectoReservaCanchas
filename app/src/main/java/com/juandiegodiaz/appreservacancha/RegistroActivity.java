@@ -43,7 +43,8 @@ private FirebaseFirestore db;
                 String nombre = nombreEditText.getText().toString();
                 String apellido = apellidoEditText.getText().toString();
 
-
+                String cancha="";
+                String hora="";
                 if (usuario.isEmpty() || contraseña.isEmpty() || nombre.isEmpty() || apellido.isEmpty() ) {
 
                     Toast.makeText(RegistroActivity.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
@@ -66,8 +67,10 @@ private FirebaseFirestore db;
                         userData.put("contraseña", contraseña);
                         userData.put("nombre", nombre);
                         userData.put("apellido", apellido);
-                        userData.put("fecha",0);
-                        userData.put("hora",0);
+
+                        userData.put("reserva activa",false);
+                        userData.put("nombre cancha reservada",cancha);
+                          userData.put("hora reserva",hora);
 
 
                         db.collection("Usuarios")

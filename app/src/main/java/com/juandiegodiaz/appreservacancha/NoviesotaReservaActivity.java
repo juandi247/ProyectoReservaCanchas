@@ -1,8 +1,5 @@
 package com.juandiegodiaz.appreservacancha;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +9,9 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,19 +20,19 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FutboleraReservaActivity extends AppCompatActivity {
+public class NoviesotaReservaActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private String horaSeleccionada ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_futbolera_reserva);
+        setContentView(R.layout.activity_noviesota_reserva);
 
         db = FirebaseFirestore.getInstance();
 
 
-        CalendarView calendarView = findViewById(R.id.cv_futbolera); // Reemplaza con el ID de tu CalendarView
+        CalendarView calendarView = findViewById(R.id.cv_picadelly);
         final String[] selectedDate = {""}; // Variable para guardar la fecha seleccionada
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -49,9 +49,9 @@ public class FutboleraReservaActivity extends AppCompatActivity {
 
 
 
-        Button btn7pm = findViewById(R.id.btn_reserva_futbolera_7pm);
-        Button btn8pm = findViewById(R.id.btn_reserva_futbolera_8pm);
-        Button btn9pm = findViewById(R.id.btn_reserva_futbolera_9pm);
+        Button btn7pm = findViewById(R.id.btn_reserva_picadelly_7pm);
+        Button btn8pm = findViewById(R.id.btn_reserva_picadelly_8pm);
+        Button btn9pm = findViewById(R.id.btn_reserva_picadelly_9pm);
 
 
         btn7pm.setOnClickListener(new View.OnClickListener() {
@@ -86,10 +86,8 @@ public class FutboleraReservaActivity extends AppCompatActivity {
 
 
     private void verificarDisponibilidad(String fecha, String hora) {
-        // Referencia a la colección de fechas
-        CollectionReference fechasCollection = db.collection("Canchas").document("Cancha La Futbolera").collection("Fechas");
 
-        // Obtén el documento de la fecha seleccionada
+        CollectionReference fechasCollection = db.collection("Canchas").document("Cancha Noviesota").collection("Fechas");
         DocumentReference fechaDoc = fechasCollection.document(fecha);
 
         fechaDoc.get()
@@ -103,7 +101,7 @@ public class FutboleraReservaActivity extends AppCompatActivity {
                                 // La hora está disponible
                                 Log.d("Disponibilidad", "La hora " + hora + " está disponible en la fecha " + fecha);
 
-                                new AlertDialog.Builder(FutboleraReservaActivity.this)
+                                new AlertDialog.Builder(NoviesotaReservaActivity.this)
                                         .setTitle("Confirmar Reserva")
                                         .setMessage("¿Deseas confirmar la reserva para las " + hora + " en la fecha " + fecha + "?")
                                         .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
@@ -112,17 +110,16 @@ public class FutboleraReservaActivity extends AppCompatActivity {
                                                 DocumentReference fechaDoc = fechasCollection.document(fecha);
                                                 Map<String, Object> updateData = new HashMap<>();
                                                 updateData.put(hora, "Ocupado");
-                                                Intent intent = new Intent(FutboleraReservaActivity.this, InicioActivity.class);
+                                                Intent intent = new Intent(NoviesotaReservaActivity.this, InicioActivity.class);
                                                 startActivity(intent);
 
                                                 fechaDoc.set(updateData, SetOptions.merge())
                                                         .addOnSuccessListener(aVoid -> {
-                                                            Toast.makeText(FutboleraReservaActivity.this, "Reserva confirmada", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(NoviesotaReservaActivity.this, "Reserva confirmada", Toast.LENGTH_SHORT).show();
 
-                                                            // Cierra el cuadro de diálogo
                                                         })
                                                         .addOnFailureListener(e -> {
-                                                            Toast.makeText(FutboleraReservaActivity.this, "Error al confirmar la reserva", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(NoviesotaReservaActivity.this, "Error al confirmar la reserva", Toast.LENGTH_SHORT).show();
 
                                                         });
 
@@ -131,9 +128,8 @@ public class FutboleraReservaActivity extends AppCompatActivity {
                                         })
                                         .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
-                                                // Si el usuario cancela la confirmación, no haces nada o puedes mostrar un mensaje.
-                                                Toast.makeText(FutboleraReservaActivity.this, "Reserva cancelada", Toast.LENGTH_SHORT).show();
-                                                dialog.dismiss(); // Cierra el cuadro de diálogo
+                                                Toast.makeText(NoviesotaReservaActivity.this, "Reserva cancelada", Toast.LENGTH_SHORT).show();
+                                                dialog.dismiss();
                                             }
                                         })
                                         .show();
@@ -147,14 +143,14 @@ public class FutboleraReservaActivity extends AppCompatActivity {
                             } else {
                                 // La hora está ocupada
                                 Log.d("Disponibilidad", "La hora " + hora + " está ocupada en la fecha " + fecha);
-                                Toast.makeText(FutboleraReservaActivity.this, "La cancha esta ocupada en esta fehca, elige otra", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(NoviesotaReservaActivity.this, "La cancha esta ocupada en esta fehca, elige otra", Toast.LENGTH_SHORT).show();
 
                             }
                         }
                     } else {
                         // El documento de la fecha no existe
                         Log.d("Disponibilidad", "La fecha " + fecha + " no se puede reservar todavia");
-                        Toast.makeText(FutboleraReservaActivity.this, "La fecha que elegiste, todavia no esta disponible para reserva :)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NoviesotaReservaActivity.this, "La fecha que elegiste, todavia no esta disponible para reserva :)", Toast.LENGTH_SHORT).show();
 
                     }
                 })
