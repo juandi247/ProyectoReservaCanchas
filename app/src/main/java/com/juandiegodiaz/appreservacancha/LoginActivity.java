@@ -3,7 +3,9 @@ package com.juandiegodiaz.appreservacancha;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
@@ -48,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 String contraseña = contraseñaET.getText().toString();
 
 
+
                 if (usuario.isEmpty() || contraseña.isEmpty()) {
                     // Al menos uno de los campos está en blanco, muestra una alerta
                     Toast.makeText(LoginActivity.this, "Por favor, complete ambos campos", Toast.LENGTH_SHORT).show();
@@ -61,6 +65,19 @@ public class LoginActivity extends AppCompatActivity {
                             .addOnSuccessListener(queryDocumentSnapshots -> {
                                 if (!queryDocumentSnapshots.isEmpty()) {
                                     Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+
+                                    String horaReserva = "";
+                                    //llamar el campo de hora reserva de la base de datos!! godd
+                                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                                        horaReserva = document.getString("hora reserva");
+                                    }
+                                    SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                    editor.putString("usuario", usuario); // Donde "usuario" es el nombre del usuario
+
+                                    editor.apply();
+
 
                                         Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
                                         startActivity(intent);

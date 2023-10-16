@@ -3,15 +3,16 @@ package com.juandiegodiaz.appreservacancha;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
-
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,12 +25,14 @@ public class FutboleraReservaActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private String horaSeleccionada ="";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_futbolera_reserva);
 
         db = FirebaseFirestore.getInstance();
+        SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
 
         CalendarView calendarView = findViewById(R.id.cv_futbolera); // Reemplaza con el ID de tu CalendarView
@@ -87,6 +90,8 @@ public class FutboleraReservaActivity extends AppCompatActivity {
 
     private void verificarDisponibilidad(String fecha, String hora) {
         // Referencia a la colección de fechas
+
+
         CollectionReference fechasCollection = db.collection("Canchas").document("Cancha La Futbolera").collection("Fechas");
 
         // Obtén el documento de la fecha seleccionada
@@ -112,8 +117,29 @@ public class FutboleraReservaActivity extends AppCompatActivity {
                                                 DocumentReference fechaDoc = fechasCollection.document(fecha);
                                                 Map<String, Object> updateData = new HashMap<>();
                                                 updateData.put(hora, "Ocupado");
+
                                                 Intent intent = new Intent(FutboleraReservaActivity.this, InicioActivity.class);
                                                 startActivity(intent);
+
+                                                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                                                String usuario = sharedPreferences.getString("usuario", "UsuarioPredeterminado");
+                                                //actualizacion de la persona que reservo la cancha!!!
+                                                DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
+                                                userDocRef.update("hora reserva", hora);
+                                                userDocRef.update("nombre cancha reservada", "La futbolera");
+                                                userDocRef.update("reserva activa", true)
+                                                        .addOnSuccessListener(aVoid -> {
+                                                            // Éxito al actualizar el campo
+                                                            Log.d("Actualización", "Campo 'hora reserva' actualizado con éxito");
+                                                        })
+                                                        .addOnFailureListener(e -> {
+                                                            // Error al actualizar el campo
+                                                            Log.e("Actualización", "Error al actualizar campo 'hora reserva': " + e.getMessage());
+                                                        });
+
+
+
+
 
                                                 fechaDoc.set(updateData, SetOptions.merge())
                                                         .addOnSuccessListener(aVoid -> {

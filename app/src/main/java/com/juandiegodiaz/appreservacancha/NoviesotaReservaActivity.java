@@ -1,7 +1,9 @@
 package com.juandiegodiaz.appreservacancha;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -112,6 +114,21 @@ public class NoviesotaReservaActivity extends AppCompatActivity {
                                                 updateData.put(hora, "Ocupado");
                                                 Intent intent = new Intent(NoviesotaReservaActivity.this, InicioActivity.class);
                                                 startActivity(intent);
+                                                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                                                String usuario = sharedPreferences.getString("usuario", "UsuarioPredeterminado");
+                                                //actualizacion de la persona que reservo la cancha!!!
+                                                DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
+                                                userDocRef.update("hora reserva", hora);
+                                                userDocRef.update("nombre cancha reservada", "La futbolera");
+                                                userDocRef.update("reserva activa", true)
+                                                        .addOnSuccessListener(aVoid -> {
+                                                            // Éxito al actualizar el campo
+                                                            Log.d("Actualización", "Campo 'hora reserva' actualizado con éxito");
+                                                        })
+                                                        .addOnFailureListener(e -> {
+                                                            // Error al actualizar el campo
+                                                            Log.e("Actualización", "Error al actualizar campo 'hora reserva': " + e.getMessage());
+                                                        });
 
                                                 fechaDoc.set(updateData, SetOptions.merge())
                                                         .addOnSuccessListener(aVoid -> {

@@ -1,6 +1,9 @@
 package com.juandiegodiaz.appreservacancha;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.FirebaseApp;
 import android.content.Intent;
@@ -54,39 +57,40 @@ private FirebaseFirestore db;
                 }
                 else {
                     try {
+                        CollectionReference usuariosCollection = db.collection("Usuarios");
 
+                        // Define usuarioDocRef con el ID del usuario
+                        DocumentReference usuarioDocRef = usuariosCollection.document(usuario);
 
-                        db.collection("Usuarios")
-                        .whereEqualTo("usuario", usuario)
-                        .get()
-                        .addOnSuccessListener(queryDocumentSnapshots -> {
-                      if (queryDocumentSnapshots.isEmpty()) {
-                        // Crear un nuevo documento en la colección "usuarios"
-                        Map<String, Object> userData = new HashMap<>();
-                        userData.put("usuario", usuario);
-                        userData.put("contraseña", contraseña);
-                        userData.put("nombre", nombre);
-                        userData.put("apellido", apellido);
-
-                        userData.put("reserva activa",false);
-                        userData.put("nombre cancha reservada",cancha);
-                          userData.put("hora reserva",hora);
-
-
-                        db.collection("Usuarios")
-                                .add(userData)
-                                .addOnSuccessListener(documentReference -> {
-                                    Toast.makeText(RegistroActivity.this, "Usuario registrado con éxito, Inicia sesion ahora", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
-                                    startActivity(intent);
-
-                                })
-                                .addOnFailureListener(e -> {
-                                    Toast.makeText(RegistroActivity.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
-                                });
+                        // Verifica si el usuario ya existe en la colección
+                        usuarioDocRef.get()
+                                .addOnSuccessListener(documentSnapshot -> {
+                                    if (documentSnapshot.exists()) {
+                                        // El usuario ya existe, muestra un mensaje de error
+                                        Toast.makeText(RegistroActivity.this, "El usuario ya existe, elige otro nombre de usuario", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        // El nombre de usuario ya está en uso
-                                        Toast.makeText(RegistroActivity.this, "El nombre de usuario ya está en uso. Por favor, elige otro.", Toast.LENGTH_SHORT).show();
+                                        // El usuario no existe, así que podemos crearlo
+
+                                        // Crear un mapa con los datos del usuario
+                                        Map<String, Object> userData = new HashMap<>();
+                                        userData.put("usuario", usuario);
+                                        userData.put("contraseña", contraseña);
+                                        userData.put("nombre", nombre);
+                                        userData.put("apellido", apellido);
+                                        userData.put("reserva activa", false);
+                                        userData.put("nombre cancha reservada", cancha);
+                                        userData.put("hora reserva", hora);
+
+                                        // Establecer los datos del usuario en el documento con el ID de usuario
+                                        usuarioDocRef.set(userData)
+                                                .addOnSuccessListener(aVoid -> {
+                                                    Toast.makeText(RegistroActivity.this, "Usuario creado con éxito", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                                                    startActivity(intent);
+                                                })
+                                                .addOnFailureListener(e -> {
+                                                    Toast.makeText(RegistroActivity.this, "Error al crear usuario: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                });
                                     }
                                 });
                     } catch (Exception e) {
