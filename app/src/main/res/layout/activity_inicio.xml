@@ -266,7 +266,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:fontFamily="@font/inika_bold"
-        android:shadowColor="#FF0909"
         android:text="¡Ya tienes tu reserva activa!"
         android:textColor="#0055FF"
         android:textSize="20sp"
