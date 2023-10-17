@@ -83,10 +83,6 @@ public class LoginActivity extends AppCompatActivity {
                                         startActivity(intent);
 
 
-
-
-
-
                                 } else {
                                     // Usuario y/o contraseña incorrectos
                                     Toast.makeText(LoginActivity.this, "Usuario y/o contraseña incorrectos", Toast.LENGTH_LONG).show();
@@ -107,7 +103,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-/*
+
+
+
+/* Para actualizar los horarios!!!
 
  //   CollectionReference canchasCollection = db.collection("Canchas");
     //DocumentReference cancha1Doc = canchasCollection.document("Cancha Picadelly");
@@ -122,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                             // Agrega los horarios como campos en este documento
                                             Map<String, Object> horarios = new HashMap<>();
         horarios.put("7pm", "Disponible");
-        horarios.put("8pm", "Ocupado");
+        horarios.put("8pm", "Disponible");
         horarios.put("9pm", "Disponible");
 
         // Actualiza los horarios en el documento de fecha
