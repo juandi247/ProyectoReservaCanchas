@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +25,11 @@ public class InicioActivity extends AppCompatActivity {
         Button btnFutbolera = findViewById(R.id.btn_reservaFutbolera);
         Button btnNoviesota = findViewById(R.id.btn_reservaNoviesota);
        Button btnPicadelly = findViewById(R.id.btn_reservaPicadelly);
+
+       //agregacion de botones para el menu de abajo
+       ImageButton btnHorario=findViewById(R.id.btn_verReservas_desdeInicio);
+       ImageButton btnPerfil=findViewById(R.id.btn_verPerfil_desdeInicio);
+
 
         TextView txtReservaActiva = findViewById(R.id.tv_reservaActiva);
         db = FirebaseFirestore.getInstance();
@@ -84,6 +89,26 @@ public class InicioActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(InicioActivity.this, PicadellyReservaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnHorario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(InicioActivity.this, CalendarioActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(InicioActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });

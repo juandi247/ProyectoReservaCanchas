@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo_app"
     tools:context=".PicadellyReservaActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="342dp"
-        android:layout_height="475dp"
-        android:layout_marginTop="176dp"
+        android:layout_width="345dp"
+        android:layout_height="522dp"
+        android:layout_marginTop="160dp"
         android:background="@drawable/rounded_cosoreserva"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +19,8 @@
 
         <CalendarView
             android:id="@+id/cv_picadelly"
-            android:layout_width="333dp"
-            android:layout_height="217dp"
+            android:layout_width="310dp"
+            android:layout_height="284dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_calendar"
             android:maxDate="11/20/2023"
@@ -175,7 +176,7 @@
             app:tint="@color/tint_bottom_sin_uso" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/btn_Home_desdeCalendario"
             android:layout_width="74dp"
             android:layout_height="54dp"
 
