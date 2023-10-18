@@ -136,26 +136,26 @@
         app:srcCompat="@drawable/perfilhaaland" />
 
     <Button
-        android:id="@+id/btn_reserva_futbolera_9pm2"
+        android:id="@+id/cambiar_contraseña_btn"
         android:layout_width="369dp"
         android:layout_height="47dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="96dp"
         android:backgroundTint="@color/color_botones_verdoso"
-        android:text="Editar Perfil"
+        android:text="Cambiar Contraseña"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usuario.txt" />
 
     <Button
-        android:id="@+id/btn_reserva_futbolera_9pm3"
+        android:id="@+id/cerrar_sesion_btn"
         android:layout_width="372dp"
         android:layout_height="49dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/color_botones_verdoso"
-        android:text="Cambiar Contraseña"
+        android:text="Cerrar Sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_reserva_futbolera_9pm2" />
+        app:layout_constraintTop_toBottomOf="@+id/cambiar_contraseña_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
