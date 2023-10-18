@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarioActivity">
-
+    tools:context=".CalendarioActivity"
+    android:background="@color/fondo_app"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -14,6 +15,7 @@
         android:background="@drawable/rounded_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
 
 
         app:layout_constraintTop_toTopOf="parent">
@@ -71,7 +73,7 @@
             app:tint="@color/tint_bottom_sin_uso" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/btn_Home_desdeCalendario2"
             android:layout_width="74dp"
             android:layout_height="54dp"
 
@@ -86,7 +88,7 @@
             app:srcCompat="@drawable/hogarchikito" />
 
         <ImageButton
-            android:id="@+id/btn_verPerfil_desdeInicio"
+            android:id="@+id/btn_verPerfil_desdeCalendario"
             android:layout_width="72dp"
             android:layout_height="50dp"
             android:layout_marginTop="2dp"
@@ -118,5 +120,6 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

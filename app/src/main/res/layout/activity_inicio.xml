@@ -228,7 +228,7 @@
             app:tint="@color/tint_bottom_sin_uso" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/btn_Home_desdeCalendario"
             android:layout_width="74dp"
             android:layout_height="54dp"
 
