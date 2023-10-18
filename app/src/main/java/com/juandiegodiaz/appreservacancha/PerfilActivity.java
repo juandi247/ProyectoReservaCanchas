@@ -16,7 +16,7 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        Button btnGoToInicio = findViewById(R.id.cambiar_contraseña_btn);
+        Button btnGoToInicio = findViewById(R.id.cerrar_sesion_btn);
 
         btnGoToInicio.setOnClickListener(new View.OnClickListener() {
             @Override
