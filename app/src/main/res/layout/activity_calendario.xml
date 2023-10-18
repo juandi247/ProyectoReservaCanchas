@@ -121,5 +121,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="406dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="52dp"
+        android:background="#FF0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="173dp"
+            android:layout_height="35dp"
+            android:text="Datos de tu Reserva"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="127dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
