@@ -167,7 +167,7 @@ public class CalendarioActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(CalendarioActivity.this, InicioActivity.class);
+                Intent intent = new Intent(CalendarioActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });

@@ -22,8 +22,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="400dp"
-        android:layout_height="0dp"
+        android:layout_width="407dp"
+        android:layout_height="104dp"
         android:background="@drawable/rounded_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
             android:id="@+id/imageView"
             android:layout_width="94dp"
             android:layout_height="80dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
 
             android:layout_marginEnd="4dp"
             android:src="@drawable/icono_titulo"
@@ -46,7 +46,7 @@
             android:id="@+id/textView3"
             android:layout_width="323dp"
             android:layout_height="100dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="28dp"
             android:text="ONCE-SINTETICA"
             android:textColor="#F3F3F3"
             android:textSize="33dp"
@@ -54,7 +54,7 @@
 
             app:fontFamily="@font/black_ops_one"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.363"
+            app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
