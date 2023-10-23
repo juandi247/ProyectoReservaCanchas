@@ -13,7 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="448dp"
-        android:text=" Nombre de Usuario"
+        android:text="Hola! "
+        android:textAlignment="center"
+        android:textColor="#252525"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -63,10 +65,12 @@
 
     <TextView
         android:id="@+id/tv_usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Usuario"
+        android:layout_width="238dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="48dp"
+        android:textAlignment="center"
+        android:textColor="#252525"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +86,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_verReservas_desdePerfil"
+            android:id="@+id/btn_calendarPerfil"
             android:layout_width="111dp"
             android:layout_height="39dp"
             android:layout_marginTop="8dp"
@@ -110,7 +114,6 @@
             app:srcCompat="@drawable/hogarchikito" />
 
         <ImageButton
-            android:id="@+id/btn_verPerfil_desdeInicio"
             android:layout_width="72dp"
             android:layout_height="50dp"
             android:layout_marginTop="2dp"
@@ -157,6 +160,7 @@
         android:layout_marginTop="28dp"
         android:fontFamily="@font/inika_bold"
         android:text="PERFIL"
+        android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -168,12 +172,13 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
         android:layout_marginTop="19dp"
         android:layout_marginBottom="25dp"
         android:text="BIENVENIDO!"
-        android:textSize="20sp"
+        android:textColor="#252525"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_nombreUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10"
         app:layout_constraintVertical_bias="0.0" />

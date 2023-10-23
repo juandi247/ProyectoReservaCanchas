@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -32,6 +33,9 @@ public class NoviesotaReservaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_noviesota_reserva);
 
         db = FirebaseFirestore.getInstance();
+        ImageButton boton_horario=findViewById(R.id.boton_CalendarioNovia);
+        ImageButton boton_inicio=findViewById(R.id.boton_inicioNovia);
+        ImageButton boton_perfil=findViewById(R.id.boton_perfilNovia);
 
 
         CalendarView calendarView = findViewById(R.id.cv_picadelly);
@@ -83,6 +87,35 @@ public class NoviesotaReservaActivity extends AppCompatActivity {
         });
 
 
+
+
+        boton_perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(NoviesotaReservaActivity.this,PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        boton_horario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(NoviesotaReservaActivity.this,CalendarioActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        boton_inicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(NoviesotaReservaActivity.this,InicioActivity.class);
+                startActivity(intent);
+            }
+        });
         // hacemos esto para que los 3 botones pues depende de cada boton de la hora cambia el string de la hora seleccionad
     }
 

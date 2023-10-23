@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.CollectionReference;
@@ -34,7 +35,9 @@ public class PicadellyReservaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_picadelly_reserva);
 
         db = FirebaseFirestore.getInstance();
-
+        ImageButton boton_horario=findViewById(R.id.boton_calendarioPicadelly);
+        ImageButton boton_inicio=findViewById(R.id.boton_inicioPicadelly);
+        ImageButton boton_perfil=findViewById(R.id.boton_perfilPicadelly);
 
         CalendarView calendarView = findViewById(R.id.cv_picadelly);
         final String[] selectedDate = {""}; // Variable para guardar la fecha seleccionada
@@ -84,6 +87,34 @@ public class PicadellyReservaActivity extends AppCompatActivity {
             }
         });
 
+
+        boton_perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(PicadellyReservaActivity.this,PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        boton_horario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(PicadellyReservaActivity.this,CalendarioActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        boton_inicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(PicadellyReservaActivity.this,InicioActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // hacemos esto para que los 3 botones pues depende de cada boton de la hora cambia el string de la hora seleccionad
     }

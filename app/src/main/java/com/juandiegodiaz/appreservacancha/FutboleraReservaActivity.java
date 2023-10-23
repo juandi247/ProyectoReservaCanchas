@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -33,7 +34,9 @@ public class FutboleraReservaActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-
+        ImageButton boton_horario=findViewById(R.id.boton_calendarioFutbolera);
+        ImageButton boton_inicio=findViewById(R.id.boton_inicioFutbolera);
+        ImageButton boton_perfil=findViewById(R.id.boton_perfilFutbolera);
 
         CalendarView calendarView = findViewById(R.id.cv_futbolera); // Reemplaza con el ID de tu CalendarView
         final String[] selectedDate = {""}; // Variable para guardar la fecha seleccionada
@@ -83,7 +86,33 @@ public class FutboleraReservaActivity extends AppCompatActivity {
             }
         });
 
+        boton_perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(FutboleraReservaActivity.this,PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        boton_horario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(FutboleraReservaActivity.this,CalendarioActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        boton_inicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(FutboleraReservaActivity.this,InicioActivity.class);
+                startActivity(intent);
+            }
+        });
         // hacemos esto para que los 3 botones pues depende de cada boton de la hora cambia el string de la hora seleccionad
     }
 

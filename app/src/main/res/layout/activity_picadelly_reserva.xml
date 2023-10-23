@@ -163,7 +163,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_verCalendario_desdeInicio"
+            android:id="@+id/boton_calendarioPicadelly"
             android:layout_width="111dp"
             android:layout_height="39dp"
             android:layout_marginTop="8dp"
@@ -176,7 +176,7 @@
             app:tint="@color/tint_bottom_sin_uso" />
 
         <ImageButton
-            android:id="@+id/btn_Home_desdeCalendario"
+            android:id="@+id/boton_inicioPicadelly"
             android:layout_width="74dp"
             android:layout_height="54dp"
 
@@ -191,7 +191,7 @@
             app:srcCompat="@drawable/hogarchikito" />
 
         <ImageButton
-            android:id="@+id/btn_verPerfil_desdeInicio"
+            android:id="@+id/boton_perfilPicadelly"
             android:layout_width="72dp"
             android:layout_height="50dp"
             android:layout_marginTop="2dp"
