@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo_app"
     tools:context=".PerfilActivity">
+
     <TextView
-        android:id="@+id/nombre_u_txt"
+        android:id="@+id/tv_nombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="392dp"
+        android:layout_marginTop="448dp"
         android:text=" Nombre de Usuario"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,17 +62,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/usuario.txt"
+        android:id="@+id/tv_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:text="Usuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_u_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_nombreUsuario" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
         android:layout_width="409dp"
         android:layout_height="49dp"
         android:background="@drawable/rounded_bottom"
@@ -79,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_verReservas_desdeInicio"
+            android:id="@+id/btn_verReservas_desdePerfil"
             android:layout_width="111dp"
             android:layout_height="39dp"
             android:layout_marginTop="8dp"
@@ -92,7 +95,7 @@
             app:tint="@color/tint_bottom_sin_uso" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/btn_home_desdePerfil"
             android:layout_width="74dp"
             android:layout_height="54dp"
 
@@ -128,34 +131,51 @@
         android:id="@+id/imageView10"
         android:layout_width="154dp"
         android:layout_height="145dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/nombre_u_txt"
+        android:layout_marginBottom="76dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_nombreUsuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/perfilhaaland" />
 
     <Button
-        android:id="@+id/cambiar_contraseña_btn"
-        android:layout_width="369dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="96dp"
-        android:backgroundTint="@color/color_botones_verdoso"
-        android:text="Cambiar Contraseña"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuario.txt" />
-
-    <Button
         android:id="@+id/cerrar_sesion_btn"
-        android:layout_width="372dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="252dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="52dp"
         android:backgroundTint="@color/color_botones_verdoso"
         android:text="Cerrar Sesion"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/inika_bold"
+        android:text="PERFIL"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiar_contraseña_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="25dp"
+        android:text="BIENVENIDO!"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_nombreUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@ public class InicioActivity extends AppCompatActivity {
        Button btnPicadelly = findViewById(R.id.btn_reservaPicadelly);
 
        //agregacion de botones para el menu de abajo
-       ImageButton btnHorario=findViewById(R.id.btn_verReservas_desdeInicio);
+       ImageButton btnHorario=findViewById(R.id.btn_verCalendario_desdeInicio);
        ImageButton btnPerfil=findViewById(R.id.btn_verPerfil_desdeInicio);
 
 

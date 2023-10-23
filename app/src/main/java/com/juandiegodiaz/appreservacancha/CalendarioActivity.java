@@ -2,12 +2,14 @@ package com.juandiegodiaz.appreservacancha;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,10 +40,10 @@ public class CalendarioActivity extends AppCompatActivity {
         String usuario = sharedPreferences.getString("usuario", "UsuarioPredeterminado");
 
         DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
-
-
-
+        ConstraintLayout datoslayout=findViewById(R.id.Layout_datosReserva);
+        TextView coso=findViewById(R.id.tv_ningunaReserva);
         ImageButton btnHome=findViewById(R.id.btn_Home_desdeCalendario2);
+        ImageButton btnProfile=findViewById(R.id.btn_verPerfil_desdeCalendario);
 
 
         userDocRef.get()
@@ -51,7 +53,8 @@ public class CalendarioActivity extends AppCompatActivity {
                         if (reservaActiva != null && reservaActiva) {
                             // El usuario tiene una reserva activa, muestra el mensaje
                             btncancelarReserva.setVisibility(View.VISIBLE);
-
+                            datoslayout.setVisibility(View.VISIBLE);
+                            coso.setVisibility(View.GONE);
                             String horaReserva = documentSnapshot.getString("hora reserva");
                             String fechaReserva = documentSnapshot.getString("fecha reserva");
                             String canchaReservada = documentSnapshot.getString("nombre cancha reservada");
@@ -60,6 +63,16 @@ public class CalendarioActivity extends AppCompatActivity {
                             Log.d("DatosUsuario", "Hora de Reserva: " + horaReserva);
                             Log.d("DatosUsuario", "Fecha de Reserva: " + fechaReserva);
                             Log.d("DatosUsuario", "Cancha Reservada: " + canchaReservada);
+
+                            TextView textViewHoraReserva = findViewById(R.id.tv_DatosHora);
+                            TextView textViewFechaReserva = findViewById(R.id.tv_DatosFecha);
+                            TextView textViewCanchaReservada = findViewById(R.id.tv_DatosCancha);
+
+                            textViewHoraReserva.setText(  horaReserva);
+                            textViewFechaReserva.setText( fechaReserva);
+                            textViewCanchaReservada.setText(canchaReservada);
+
+
 
                             btncancelarReserva.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -124,6 +137,8 @@ public class CalendarioActivity extends AppCompatActivity {
                         } else {
                             // No hay reserva activa, oculta el boton
                             btncancelarReserva.setVisibility(View.GONE);
+                            datoslayout.setVisibility(View.GONE);
+                            coso.setVisibility(View.VISIBLE);
 
 
                         }
@@ -138,6 +153,17 @@ public class CalendarioActivity extends AppCompatActivity {
 
 
         btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(CalendarioActivity.this, InicioActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
