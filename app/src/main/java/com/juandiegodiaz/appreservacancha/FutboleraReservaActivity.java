@@ -163,7 +163,7 @@ public class FutboleraReservaActivity extends AppCompatActivity {
                                                                     //actualizacion de la persona que reservo la cancha!!!
                                                                     DocumentReference userDocRef = db.collection("Usuarios").document(usuario);
                                                                     userDocRef.update("hora reserva", hora);
-                                                                    userDocRef.update("nombre cancha reservada", "La futbolera");
+                                                                    userDocRef.update("nombre cancha reservada", "La Futbolera");
                                                                     userDocRef.update("reserva activa", true);
                                                                     userDocRef.update("fecha reserva",fecha )
                                                                             .addOnSuccessListener(aVoid -> {

@@ -2,7 +2,6 @@ package com.juandiegodiaz.appreservacancha;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,16 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.SetOptions;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         Button btnRegistro = findViewById(R.id.btn_registro);
         Button btnInicioSesion= findViewById(R.id.btn_inicioSesion);
         EditText usuarioEditText = findViewById(R.id.et_usuario);
+        ImageButton btnGoToAdmin= findViewById(R.id.btn_GoToInicioSesionAdmins);
         EditText contraseñaET = findViewById(R.id.et_contrasenaInicio);
         db= FirebaseFirestore.getInstance();
 
@@ -43,6 +38,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        btnGoToAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(LoginActivity.this, AdminLoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnInicioSesion.setOnClickListener(new View.OnClickListener() {
             @Override
