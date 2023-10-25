@@ -12,8 +12,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -46,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         btnInicioSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,9 +119,10 @@ public class LoginActivity extends AppCompatActivity {
 
 /* Para actualizar los horarios!!!
 
- //   CollectionReference canchasCollection = db.collection("Canchas");
-    //DocumentReference cancha1Doc = canchasCollection.document("Cancha Picadelly");
-    DocumentReference cancha2Doc = canchasCollection.document("Cancha Picadelly");
+  CollectionReference canchasCollection = db.collection("Canchas");
+    DocumentReference cancha1Doc = canchasCollection.document("Cancha Picadelly");
+    DocumentReference cancha2Doc = canchasCollection.document("Cancha La Futbolera");
+
                                     for (int i = 15; i <= 17; i++) {
                                             // Crea una fecha en formato "yyyy-MM-dd"
                                             String fecha = "2023-10-" + i;
