@@ -1,19 +1,26 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * import {onCall} from "firebase-functions/v2/https";
- * import {onDocumentWritten} from "firebase-functions/v2/firestore";
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
+import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
 
-import {onRequest} from "firebase-functions/v2/https";
-import * as logger from "firebase-functions/logger";
+admin.initializeApp();
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+// Nombre de la colección de canchas
+const COLLECTION_NAME = "Canchas";
 
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+// Función para eliminar fechas anteriores
+export const eliminarFechasAnteriores = functions.firestore
+  .document("${COLLECTION_NAME}/{canchaId}/Fechas/{fechaId}")
+  .onCreate(async (snapshot, context) => {
+    const fechaId = context.params.fechaId;
+    const fechaActual = new Date().toISOString().split("T")[0];
+    if (fechaId < fechaActual) {
+      // La fecha es anterior a la fecha actual, así que la eliminamos
+      const canchaId = context.params.canchaId;
+      const fechaDocRef = admin
+        .firestore()
+        .collection(COLLECTION_NAME)
+        .doc(canchaId)
+        .collection("Fechas")
+        .doc(fechaId); await fechaDocRef.delete();
+    }
+    return null;
+  });
