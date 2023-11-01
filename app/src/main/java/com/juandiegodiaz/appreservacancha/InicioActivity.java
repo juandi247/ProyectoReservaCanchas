@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -112,5 +113,10 @@ public class InicioActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void onBackPressed() {
+        Toast.makeText(InicioActivity.this, "Si quieres cerrar sesion ve a la parte de Perfil", Toast.LENGTH_SHORT).show();
+
     }
 }

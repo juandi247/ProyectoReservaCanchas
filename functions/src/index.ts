@@ -24,3 +24,4 @@ export const eliminarFechasAnteriores = functions.firestore
     }
     return null;
   });
+  

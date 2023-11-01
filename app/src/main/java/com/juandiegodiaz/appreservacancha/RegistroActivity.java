@@ -6,6 +6,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.storage.StorageReference;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,18 +18,26 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.grpc.Context;
+
 public class RegistroActivity extends AppCompatActivity {
 
 
-private FirebaseFirestore db;
+    private FirebaseFirestore db;
+    private StorageReference storageRef;
+    private DocumentReference userDocRef;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
         Button btnVolver = findViewById(R.id.btn_VolverInicioSesion);
         FirebaseApp.initializeApp(this);
+
         Button btnRegistro = findViewById(R.id.btn_terminarRegistro);
         EditText usuarioEditText = findViewById(R.id.et_usuarioRegistro);
         EditText contrasenaET = findViewById(R.id.et_contrasenaRegistro);
@@ -35,6 +45,7 @@ private FirebaseFirestore db;
         EditText apellidoEditText = findViewById(R.id.et_apellido);
 
         db= FirebaseFirestore.getInstance();
+
 
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +59,7 @@ private FirebaseFirestore db;
                 String fecha="";
                 String cancha="";
                 String hora="";
+                String Imagen="";
                 if (usuario.isEmpty() || contraseña.isEmpty() || nombre.isEmpty() || apellido.isEmpty() ) {
 
                     Toast.makeText(RegistroActivity.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
@@ -81,6 +93,7 @@ private FirebaseFirestore db;
                                         userData.put("nombre cancha reservada", cancha);
                                         userData.put("hora reserva", hora);
                                         userData.put("fecha reserva", fecha);
+                                        userData.put("link imagen", Imagen);
 
 
 

@@ -12,13 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="448dp"
+        android:layout_marginTop="496dp"
         android:text="Hola! "
         android:textAlignment="center"
         android:textColor="#252525"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,12 +67,12 @@
         android:id="@+id/tv_usuario"
         android:layout_width="238dp"
         android:layout_height="39dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:textAlignment="center"
         android:textColor="#252525"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nombreUsuario" />
 
@@ -131,26 +131,25 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="154dp"
-        android:layout_height="145dp"
-        android:layout_marginBottom="76dp"
+        android:id="@+id/im_mostrarImagen"
+        android:layout_width="194dp"
+        android:layout_height="192dp"
+        android:layout_marginBottom="96dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_nombreUsuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/perfilhaaland" />
 
     <Button
         android:id="@+id/cerrar_sesion_btn"
-        android:layout_width="252dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="52dp"
+        android:layout_width="191dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
         android:backgroundTint="@color/color_botones_verdoso"
         android:text="Cerrar Sesion"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -180,7 +179,18 @@
         app:layout_constraintBottom_toTopOf="@+id/tv_nombreUsuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/im_mostrarImagen"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <Button
+        android:id="@+id/btn_cambiarImagen"
+        android:layout_width="176dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="124dp"
+        android:backgroundTint="@color/color_botones_verdoso"
+        android:text="Cambiar Foto de Perfil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
