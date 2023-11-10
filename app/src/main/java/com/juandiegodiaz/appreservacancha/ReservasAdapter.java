@@ -60,6 +60,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
             @Override
             public void onClick(View view) {
                 // Lógica para eliminar la reserva usando el nombre de usuario
+
                 eliminarReserva(NameUsuario);
             }
         });
@@ -115,12 +116,19 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
 
                         userDocRef.update(reservaData)
                                 .addOnSuccessListener(aVoid -> {
-                                    Log.d("ELIMICION", "RESERVA ELIMINADAAA: ");
+                                    Log.d("ELIMINACION", "RESERVA ELIMINADAAA: ");
 
 
                                 });
                     }
                 });
+
+
+
+
+
+
+
     }
 }
 

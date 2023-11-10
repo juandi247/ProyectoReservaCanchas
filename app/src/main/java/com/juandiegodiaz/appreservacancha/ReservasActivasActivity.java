@@ -16,8 +16,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ReservasActivasActivity extends AppCompatActivity {
     private FirebaseFirestore db;
@@ -42,11 +48,6 @@ public class ReservasActivasActivity extends AppCompatActivity {
         obtenerDatosDeFirebase();
     }
 
-
-
-
-
-
     private void obtenerDatosDeFirebase() {
         SharedPreferences sharedPreferences = getSharedPreferences("AdminPreferencias", Context.MODE_PRIVATE);
         String canchaDeseada = sharedPreferences.getString("cancha", "UsuarioPredeterminado");
@@ -67,13 +68,15 @@ public class ReservasActivasActivity extends AppCompatActivity {
                                 String ApellidoUsuario = document.getString("apellido");
                                 String FechaReservada = document.getString("fecha reserva");
                                 String HoraReservada = document.getString("hora reserva");
-                                String Usuario=document.getString("usuario");
+                                String Usuario = document.getString("usuario");
 
                                 // Crear una cadena con la información de la reserva y agregarla a la lista
                                 String NombreAppelidoInfo = nombreUsuario + " " + ApellidoUsuario;
-                                String FechaHoraInfo=" Fecha: " + FechaReservada + " Hora: " + HoraReservada;
-                                String NombreUsuario=Usuario;
-                                reservasList.add(NombreAppelidoInfo + ";" + FechaHoraInfo+";"+NombreUsuario);                            }
+                                String FechaHoraInfo = " Fecha: " + FechaReservada + " Hora: " + HoraReservada;
+                                String NombreUsuario = Usuario;
+                                reservasList.add(NombreAppelidoInfo + ";" + FechaHoraInfo + ";" + NombreUsuario);
+                            }
+                            ordenarReservasPorFecha();
 
                             // Notificar al adaptador que los datos han cambiado
                             adapter.notifyDataSetChanged();
@@ -84,11 +87,78 @@ public class ReservasActivasActivity extends AppCompatActivity {
                 });
 
 
+    }
+
+
+
+    private void ordenarReservasPorFecha() {
+        Collections.sort(reservasList, new Comparator<String>() {
+            @Override
+            public int compare(String reserva1, String reserva2) {
+                String[] partesReserva1 = reserva1.split(";");
+                String[] partesReserva2 = reserva2.split(";");
+
+                String fechaStr1 = partesReserva1[1]; // La fecha está en la segunda parte
+                String fechaStr2 = partesReserva2[1];
+
+                // Verificar si alguna de las fechas es nula o está vacía
+                if (fechaStr1.isEmpty() && fechaStr2.isEmpty()) {
+                    return 0; // Ambas fechas son nulas o vacías, considerarlas iguales
+                } else if (fechaStr1.isEmpty()) {
+                    return 1; // La primera fecha es nula o vacía, considerar la segunda mayor
+                } else if (fechaStr2.isEmpty()) {
+                    return -1; // La segunda fecha es nula o vacía, considerar la primera mayor
+                }
+
+                try {
+                    return fechaStr1.compareTo(fechaStr2);
+                } catch (NullPointerException e) {
+                    // Imprimir la pila de llamadas en caso de excepción
+                    e.printStackTrace();
+                    return 0; // Manejar la excepción y considerar las fechas iguales
+                }
+            }
+        });
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+    private void ordenarReservasPorFecha() {
+        Collections.sort(reservasList, new Comparator<String>() {
+            @Override
+            public int compare(String reserva1, String reserva2) {
+                Date fecha1 = parsearFecha(reserva1);
+                Date fecha2 = parsearFecha(reserva2);
+
+                return fecha1.compareTo(fecha2);
+            }
+
+            private Date parsearFecha(String fechaString) {
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                    return sdf.parse(fechaString);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        });
 }
-
-
-
+ */
 
 
 
