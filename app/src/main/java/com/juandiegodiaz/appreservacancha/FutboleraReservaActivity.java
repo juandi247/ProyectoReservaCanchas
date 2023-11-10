@@ -19,6 +19,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +41,18 @@ public class FutboleraReservaActivity extends AppCompatActivity {
 
         CalendarView calendarView = findViewById(R.id.cv_futbolera); // Reemplaza con el ID de tu CalendarView
         final String[] selectedDate = {""}; // Variable para guardar la fecha seleccionada
+
+// Obtener la fecha actual
+        Calendar calendar = Calendar.getInstance();
+
+// Restar un día a la fecha actual
+        calendar.add(Calendar.DAY_OF_MONTH,0);
+
+// Obtener el timestamp de la fecha resultante (en milisegundos desde el 1 de enero de 1970)
+        long minDate = calendar.getTimeInMillis();
+
+// Establecer la fecha mínima en el CalendarView
+        calendarView.setMinDate(minDate);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override

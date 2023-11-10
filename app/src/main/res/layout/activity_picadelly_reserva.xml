@@ -23,7 +23,7 @@
             android:layout_height="284dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_calendar"
-            android:maxDate="11/31/2023"
+            android:maxDate="12/31/2023"
             android:minDate="11/8/2023"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.529"

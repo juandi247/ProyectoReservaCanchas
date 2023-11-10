@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,6 +26,7 @@ private FirebaseFirestore db;
        Button btnReservasActivas=findViewById(R.id.verReservasboton);
         db = FirebaseFirestore.getInstance();
         TextView infoCanchaTextView = findViewById(R.id.Name_canchaTop);
+        ImageButton btnvolverLogin=findViewById(R.id.btn_volverLoginAdmin);
 
         SharedPreferences sharedPreferences = getSharedPreferences("AdminPreferencias", Context.MODE_PRIVATE);
         String usuario = sharedPreferences.getString("usuario", ""); // "" es el valor predeterminado si no se encuentra
@@ -39,6 +41,13 @@ private FirebaseFirestore db;
                startActivity(intent);
            }
        });
+        btnvolverLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InformacionAdminsActivity.this, AdminLoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         db.collection("Administradores")
