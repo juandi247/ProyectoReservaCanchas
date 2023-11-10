@@ -53,8 +53,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="354dp"
-        android:layout_height="370dp"
+        android:layout_width="339dp"
+        android:layout_height="204dp"
         android:layout_marginTop="232dp"
         android:background="@drawable/rounded_cosoreserva"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,24 +66,25 @@
             android:id="@+id/textView25"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="64dp"
             android:text="Ver Reservas Activas"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="23sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.091"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/verReservasboton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_width="137dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="112dp"
             android:backgroundTint="@color/color_botones_verdoso"
             android:text="VER"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.866"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

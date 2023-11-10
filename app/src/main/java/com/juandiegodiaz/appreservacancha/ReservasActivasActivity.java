@@ -5,10 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +34,7 @@ public class ReservasActivasActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private List<String> reservasList;
     private ReservasAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +44,12 @@ public class ReservasActivasActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         reservasList = new ArrayList<>(); // Aquí debes cargar la lista con los datos de tu base de datos
 
+        //BOTONES DE REINICIO Y VOLVER ATRAS
+
+        ImageButton btnVolver = findViewById(R.id.btn_volverMostrarAdmin);
+        ImageButton btnRefresh = findViewById(R.id.btn_reiniciarPagReservas);
+
+
         // Configurar RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerViewReservas);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -46,7 +58,32 @@ public class ReservasActivasActivity extends AppCompatActivity {
 
         // Obtener datos de Firebase y actualizar el adaptador
         obtenerDatosDeFirebase();
-    }
+
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ReservasActivasActivity.this, InformacionAdminsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+      btnRefresh.setOnClickListener(new View.OnClickListener()
+
+    {
+        @Override
+        public void onClick (View v){
+            obtenerDatosDeFirebase();
+            Toast.makeText(ReservasActivasActivity.this, "Pagina Refrescada", Toast.LENGTH_SHORT).show();
+
+        }
+    });
+}
+
+
+
 
     private void obtenerDatosDeFirebase() {
         SharedPreferences sharedPreferences = getSharedPreferences("AdminPreferencias", Context.MODE_PRIVATE);
