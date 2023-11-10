@@ -52,15 +52,39 @@
 
     <TextView
         android:id="@+id/tv_mostrarReservasActivas"
-        android:layout_width="377dp"
-        android:layout_height="335dp"
+        android:layout_width="337dp"
+        android:layout_height="38dp"
         android:layout_marginTop="136dp"
-        android:text="TextView"
-        android:textAlignment="viewStart"
+        android:text="RESERVAS ACTIVAS"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="408dp"
+        android:layout_height="570dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:context=".ReservasActivasActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewReservas"
+            android:layout_width="match_parent"
+            android:layout_height="464dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="31dp"
+            android:padding="16dp"
+            android:textAlignment="center" />
+
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
