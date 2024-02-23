@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -33,7 +34,8 @@ public class PerfilActivity extends AppCompatActivity {
     private ImageView imagenPerfil;
     private StorageReference storageRef;
     private DocumentReference userDocRef;
-
+    private static final String REMEMBER_ME_KEY = "rememberMe";
+    private static final String EMAIL_KEY = "email";
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,11 +90,17 @@ public class PerfilActivity extends AppCompatActivity {
         btnGoToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Iniciar la actividad de inicio
+                // Cerrar sesión en Firebase
+                FirebaseAuth.getInstance().signOut();
+
+                // Redirigir al LoginActivity
                 Intent intent = new Intent(PerfilActivity.this, LoginActivity.class);
                 startActivity(intent);
-               Toast.makeText(PerfilActivity.this, "Cerraste Sesion", Toast.LENGTH_SHORT).show();
 
+                // Finalizar todas las actividades actuales y la aplicación
+                finishAffinity();
+
+                Toast.makeText(PerfilActivity.this, "Cerraste Sesión", Toast.LENGTH_SHORT).show();
             }
         });
 

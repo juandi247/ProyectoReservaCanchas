@@ -53,7 +53,7 @@
         android:id="@+id/et_contrasenaInicio"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:fontFamily="@font/inika_bold"
         android:hint="Contraseña"
@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <Button
         android:id="@+id/btn_registro"
@@ -78,13 +78,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_inicioSesion" />
 
     <EditText
-        android:id="@+id/et_usuario"
+        android:id="@+id/et_email"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginTop="240dp"
         android:ems="10"
         android:fontFamily="@font/inika_bold"
-        android:hint="Usuario"
+        android:hint="Email"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -142,4 +142,6 @@
         app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_GoToInicioSesionAdmins" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

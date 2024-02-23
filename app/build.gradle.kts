@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.juandiegodiaz.appreservacancha"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.juandiegodiaz.appreservacancha"
@@ -36,9 +36,9 @@ android {
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.8.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.10.2")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -47,6 +47,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-firestore")
     implementation ("com.squareup.picasso:picasso:2.71828")
-
+        // Import the BoM for the Firebase platform
+        implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+        implementation("com.google.firebase:firebase-auth")
 
 }

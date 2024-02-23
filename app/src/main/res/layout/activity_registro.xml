@@ -10,7 +10,7 @@
         android:id="@+id/btn_VolverInicioSesion"
         android:layout_width="186dp"
         android:layout_height="63dp"
-        android:layout_marginTop="624dp"
+        android:layout_marginTop="632dp"
         android:backgroundTint="@color/color_botones_verdoso"
         android:fontFamily="@font/inika_bold"
         android:text="Volver a Inicio Sesion"
@@ -25,7 +25,7 @@
         android:id="@+id/btn_terminarRegistro"
         android:layout_width="186dp"
         android:layout_height="63dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/color_botones_verdoso"
         android:fontFamily="@font/inika_bold"
         android:text="Registro"
@@ -36,13 +36,13 @@
         app:layout_constraintTop_toBottomOf="@+id/et_contrasenaRegistro" />
 
     <EditText
-        android:id="@+id/et_usuarioRegistro"
+        android:id="@+id/et_emailRegistro"
         android:layout_width="240dp"
         android:layout_height="50dp"
         android:layout_marginTop="384dp"
         android:ems="10"
         android:fontFamily="@font/inika_bold"
-        android:hint="Usuario"
+        android:hint="Email"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -74,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_usuarioRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/et_emailRegistro" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -134,7 +134,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="52dp"
         android:ems="10"
-        android:hint="Nombre"
+        android:hint="Nombre Completo"
         android:fontFamily="@font/inika_bold"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,13 +143,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/et_apellido"
+        android:id="@+id/et_telefono"
         android:layout_width="240dp"
         android:layout_height="50dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="132dp"
         android:ems="10"
-        android:hint="Apellido"
         android:fontFamily="@font/inika_bold"
+        android:hint="Numero de Telefono"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

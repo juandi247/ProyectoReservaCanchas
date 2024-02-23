@@ -6,39 +6,45 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.SetOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
 
-import java.util.HashMap;
-import java.util.Map;
+
+
 
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
         Button btnRegistro = findViewById(R.id.btn_registro);
-        Button btnInicioSesion= findViewById(R.id.btn_inicioSesion);
-        EditText usuarioEditText = findViewById(R.id.et_usuario);
-        ImageButton btnGoToAdmin= findViewById(R.id.btn_GoToInicioSesionAdmins);
+        Button btnInicioSesion = findViewById(R.id.btn_inicioSesion);
+        EditText EmailEditText = findViewById(R.id.et_email);
+        ImageButton btnGoToAdmin = findViewById(R.id.btn_GoToInicioSesionAdmins);
         EditText contraseñaET = findViewById(R.id.et_contrasenaInicio);
-        db= FirebaseFirestore.getInstance();
 
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
                 startActivity(intent);
             }
@@ -47,71 +53,67 @@ public class LoginActivity extends AppCompatActivity {
         btnGoToAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(LoginActivity.this, AdminLoginActivity.class);
                 startActivity(intent);
             }
         });
 
-
-
         btnInicioSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usuario = usuarioEditText.getText().toString();
+                String email = EmailEditText.getText().toString();
                 String contraseña = contraseñaET.getText().toString();
 
-
-
-                if (usuario.isEmpty() || contraseña.isEmpty()) {
+                if (email.isEmpty() || contraseña.isEmpty()) {
                     // Al menos uno de los campos está en blanco, muestra una alerta
                     Toast.makeText(LoginActivity.this, "Por favor, complete ambos campos", Toast.LENGTH_SHORT).show();
                 } else {
+                    // Iniciar sesión con Firebase Authentication
+                    mAuth.signInWithEmailAndPassword(email, contraseña)
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<com.google.firebase.auth.AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<com.google.firebase.auth.AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Verificar si el correo electrónico está verificado
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        if (user != null && user.isEmailVerified()) {
+                                            // Inicio de sesión exitoso y correo electrónico verificado
+                                            Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
+                                            // Resto de tu código...
+                                            // Aquí puedes realizar otras acciones después de un inicio de sesión exitoso.
 
-                    db.collection("Usuarios")
-                            .whereEqualTo("usuario", usuario)
-                            .whereEqualTo("contraseña", contraseña)
-                            .get()
-                            .addOnSuccessListener(queryDocumentSnapshots -> {
-                                if (!queryDocumentSnapshots.isEmpty()) {
-                                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                                            // Ejemplo: Guardar el email en SharedPreferences
+                                            SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("email", email); // Donde "email" es la clave para recuperar el valor
+                                            editor.apply();
 
-                                    String horaReserva = "";
-                                    //llamar el campo de hora reserva de la base de datos!! godd
-                                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                                        horaReserva = document.getString("hora reserva");
+                                            Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
+                                            startActivity(intent);
+                                        } else {
+                                            // El correo electrónico no está verificado
+                                            Toast.makeText(LoginActivity.this, "Por favor, verifica tu dirección de correo electrónico", Toast.LENGTH_LONG).show();
+
+                                            // Reenviar el correo de verificación
+                                            if (user != null) {
+                                                user.sendEmailVerification();
+                                                Toast.makeText(LoginActivity.this, "Se ha enviado un nuevo correo de verificación", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    } else {
+                                        // Error en el inicio de sesión
+                                        Toast.makeText(LoginActivity.this, "Usuario y/o contraseña incorrectos", Toast.LENGTH_LONG).show();
                                     }
-                                    SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                                    editor.putString("usuario", usuario); // Donde "usuario" es el nombre del usuario
-
-                                    editor.apply();
-
-
-                                        Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
-                                        startActivity(intent);
-
-
-                                } else {
-                                    // Usuario y/o contraseña incorrectos
-                                    Toast.makeText(LoginActivity.this, "Usuario y/o contraseña incorrectos", Toast.LENGTH_LONG).show();
                                 }
-                            })
-                            .addOnFailureListener(e -> {
-                                // Error en la consulta
-                                Toast.makeText(LoginActivity.this, "Error en la consulta: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             });
                 }
             }
         });
-
-
     }
+
+
 }
-
-
 
 
 
