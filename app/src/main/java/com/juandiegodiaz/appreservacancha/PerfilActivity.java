@@ -90,6 +90,12 @@ public class PerfilActivity extends AppCompatActivity {
         btnGoToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Limpiar preferencias compartidas
+                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+
                 // Cerrar sesión en Firebase
                 FirebaseAuth.getInstance().signOut();
 
@@ -103,6 +109,7 @@ public class PerfilActivity extends AppCompatActivity {
                 Toast.makeText(PerfilActivity.this, "Cerraste Sesión", Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
         btnGoToInicio.setOnClickListener(new View.OnClickListener() {

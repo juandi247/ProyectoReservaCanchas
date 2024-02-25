@@ -38,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btnRegistro = findViewById(R.id.btn_registro);
         Button btnInicioSesion = findViewById(R.id.btn_inicioSesion);
+
+        Button btnSuper = findViewById(R.id.btn_superadmin);
+
         EditText EmailEditText = findViewById(R.id.et_email);
         ImageButton btnGoToAdmin = findViewById(R.id.btn_GoToInicioSesionAdmins);
         EditText contraseñaET = findViewById(R.id.et_contrasenaInicio);
@@ -46,6 +49,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSuper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SuperAdminActivity.class);
                 startActivity(intent);
             }
         });

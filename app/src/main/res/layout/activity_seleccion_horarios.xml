@@ -1,0 +1,364 @@
+<!-- res/layout/activity_gestion_horarios.xml -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SeleccionHorariosActivity">
+
+    <TextView
+        android:id="@+id/tv_Lunes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Lunes"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_Martes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:text="Martes"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="405dp"
+        android:layout_height="223dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.061">
+
+        <LinearLayout
+            android:id="@+id/layout_horarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="200dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:context=".GestionHorariosActivity">
+
+            <!-- Día seleccionado -->
+
+
+            <!-- Botones para las horas -->
+
+
+            <Button
+                android:id="@+id/btn_6am"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="6:00 AM" />
+
+            <Button
+                android:id="@+id/btn_7am"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="7:00 AM" />
+
+            <Button
+                android:id="@+id/btn_8am"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="8:00 AM" />
+
+
+            <!-- Agrega más botones para las demás horas -->
+            <!-- Botones para las horas -->
+
+            <Button
+                android:id="@+id/btn_9am"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="9:00 AM" />
+
+            <Button
+                android:id="@+id/btn_10am"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="10:00 AM" />
+
+            <Button
+                android:id="@+id/btn_11am"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="11:00 AM" />
+
+            <Button
+                android:id="@+id/btn_12pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="12:00 PM" />
+
+            <Button
+                android:id="@+id/btn_1pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="1:00 PM" />
+
+            <Button
+                android:id="@+id/btn_2pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="2:00 PM" />
+
+            <Button
+                android:id="@+id/btn_3pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="3:00 PM" />
+
+            <Button
+                android:id="@+id/btn_4pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="4:00 PM" />
+
+            <Button
+                android:id="@+id/btn_5pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="5:00 PM" />
+
+            <Button
+                android:id="@+id/btn_6pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="6:00 PM" />
+            <Button
+                android:id="@+id/btn_7pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="7:00PM"/>
+
+            <Button
+                android:id="@+id/btn_8pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="8:00 PM" />
+
+            <Button
+                android:id="@+id/btn_9pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="9:00 PM" />
+
+            <Button
+                android:id="@+id/btn_10pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="10:00 PM" />
+
+            <Button
+                android:id="@+id/btn_11pm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="11:00 PM" />
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="405dp"
+        android:layout_height="223dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.675">
+
+        <LinearLayout
+            android:id="@+id/layout_horarios_martes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="200dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:context=".GestionHorariosActivity">
+
+            <!-- Día seleccionado -->
+
+
+            <!-- Botones para las horas -->
+            <Button
+                android:id="@+id/btn_6am_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FF0303"
+                android:text="6:00 AM" />
+
+            <Button
+                android:id="@+id/btn_7am_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="7:00 AM" />
+
+            <Button
+                android:id="@+id/btn_8am_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="8:00 AM" />
+
+
+            <!-- Agrega más botones para las demás horas -->
+            <!-- Botones para las horas -->
+
+            <Button
+                android:id="@+id/btn_9am_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="9:00 AM" />
+
+            <Button
+                android:id="@+id/btn_10am_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="10:00 AM" />
+
+            <Button
+                android:id="@+id/btn_11am_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="11:00 AM" />
+
+            <Button
+                android:id="@+id/btn_12pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="12:00 PM" />
+
+            <Button
+                android:id="@+id/btn_1pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="1:00 PM" />
+
+            <Button
+                android:id="@+id/btn_2pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="2:00 PM" />
+
+            <Button
+                android:id="@+id/btn_3pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="3:00 PM" />
+
+            <Button
+                android:id="@+id/btn_4pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="4:00 PM" />
+
+            <Button
+                android:id="@+id/btn_5pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="5:00 PM" />
+
+            <Button
+                android:id="@+id/btn_6pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="6:00 PM" />
+            <Button
+                android:id="@+id/btn_7pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="7:00 PM" />
+            <Button
+                android:id="@+id/btn_8pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="8:00 PM" />
+
+            <Button
+                android:id="@+id/btn_9pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="9:00 PM" />
+
+            <Button
+                android:id="@+id/btn_10pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="10:00 PM" />
+
+            <Button
+                android:id="@+id/btn_11pm_Martes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="11:00 PM" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_guardar_horarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:text="@string/guardar_horarios"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppReservaCancha</string>
+    <string name="guardar_horarios">Guardar Horarios</string>
 </resources>
