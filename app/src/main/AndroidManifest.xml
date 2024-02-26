@@ -13,6 +13,12 @@
         android:theme="@style/Theme.AppReservaCancha"
         tools:targetApi="31">
         <activity
+            android:name=".PruebaSuperAdmin_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PruebaActivity"
+            android:exported="false" />
+        <activity
             android:name=".SeleccionHorariosActivity"
             android:exported="false" />
         <activity

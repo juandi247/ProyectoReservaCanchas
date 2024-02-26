@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SabadoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="407dp"
+            android:layout_height="306dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.583">
+
+            <LinearLayout
+                android:id="@+id/layout_horarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="200dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                tools:context=".GestionHorariosActivity">
+
+                <!-- Día seleccionado -->
+
+
+                <!-- Botones para las horas -->
+
+                <Button
+                    android:id="@+id/btn_6am_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="6:00 AM" />
+
+                <Button
+                    android:id="@+id/btn_7am_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="7:00 AM" />
+
+                <Button
+                    android:id="@+id/btn_8am_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="8:00 AM" />
+
+                <Button
+                    android:id="@+id/btn_9am_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="9:00 AM" />
+
+                <Button
+                    android:id="@+id/btn_10am_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="10:00 AM" />
+
+                <Button
+                    android:id="@+id/btn_11am_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="11:00 AM" />
+
+                <Button
+                    android:id="@+id/btn_12pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="12:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_1pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="1:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_2pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="2:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_3pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="3:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_4pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="4:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_5pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="5:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_6pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="6:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_7pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="7:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_8pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="8:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_9pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="9:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_10pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="10:00 PM" />
+
+                <Button
+                    android:id="@+id/btn_11pm_Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="11:00 PM" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_Sabado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="Sabado"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -23,7 +23,7 @@ public class SuperAdminActivity extends AppCompatActivity {
      btnseleccionHorario.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(SuperAdminActivity.this, SeleccionHorariosActivity.class);
+            Intent intent = new Intent(SuperAdminActivity.this, PruebaSuperAdmin_Activity.class);
             startActivity(intent);
           }
     });
