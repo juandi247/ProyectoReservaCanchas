@@ -38,21 +38,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="6:00 AM" />
+                    android:text="@string/_6_00_hora" />
 
                 <Button
                     android:id="@+id/btn_7am_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="7:00 AM" />
+                    android:text="@string/_7_00_hora" />
 
                 <Button
                     android:id="@+id/btn_8am_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="8:00 AM" />
+                    android:text="@string/_8_00_hora" />
 
 
                 <!-- Agrega más botones para las demás horas -->
@@ -63,105 +63,105 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="9:00 AM" />
+                    android:text="@string/_9_00_hora" />
 
                 <Button
                     android:id="@+id/btn_10am_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="10:00 AM" />
+                    android:text="@string/_10_00_hora" />
 
                 <Button
                     android:id="@+id/btn_11am_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="11:00 AM" />
+                    android:text="@string/_11_00_hora" />
 
                 <Button
                     android:id="@+id/btn_12pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="12:00 PM" />
+                    android:text="@string/_12_00_hora" />
 
                 <Button
                     android:id="@+id/btn_1pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="1:00 PM" />
+                    android:text="@string/_13_00_hora" />
 
                 <Button
                     android:id="@+id/btn_2pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="2:00 PM" />
+                    android:text="@string/_14_00_hora" />
 
                 <Button
                     android:id="@+id/btn_3pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="3:00 PM" />
+                    android:text="@string/_15_00_hora" />
 
                 <Button
                     android:id="@+id/btn_4pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="4:00 PM" />
+                    android:text="@string/_16_00_hora" />
 
                 <Button
                     android:id="@+id/btn_5pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="5:00 PM" />
+                    android:text="@string/_17_00_hora" />
 
                 <Button
                     android:id="@+id/btn_6pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="6:00 PM" />
+                    android:text="@string/_18_00_hora" />
 
                 <Button
                     android:id="@+id/btn_7pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="7:00PM" />
+                    android:text="@string/_19_00_hora" />
 
                 <Button
                     android:id="@+id/btn_8pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="8:00 PM" />
+                    android:text="@string/_20_00_hora" />
 
                 <Button
                     android:id="@+id/btn_9pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="9:00 PM" />
+                    android:text="@string/_21_00_hora" />
 
                 <Button
                     android:id="@+id/btn_10pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="10:00 PM" />
+                    android:text="@string/_22_00_hora" />
 
                 <Button
                     android:id="@+id/btn_11pm_Martes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#CCCCCC"
-                    android:text="11:00 PM" />
+                    android:text="@string/_23_00_hora" />
 
 
             </LinearLayout>
@@ -180,6 +180,13 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btn_GuardarMartes"
+            android:layout_width="156dp"
+            android:layout_height="56dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

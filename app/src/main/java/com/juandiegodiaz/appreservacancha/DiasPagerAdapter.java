@@ -6,13 +6,18 @@ import androidx.fragment.app.FragmentManager;
 
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class DiasPagerAdapter extends FragmentStatePagerAdapter {
     private static final int NUM_PAGES = 7; // Número total de días
+    private List<Boolean> botonesSeleccionados;
 
     public DiasPagerAdapter(FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        botonesSeleccionados = new ArrayList<>(Collections.nCopies(NUM_PAGES, false));
     }
-
     @Override
     public Fragment getItem(int position) {
         // Devuelve el Fragment correspondiente al día en la posición actual

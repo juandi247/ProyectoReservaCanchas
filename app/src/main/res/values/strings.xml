@@ -3,4 +3,22 @@
     <string name="guardar_horarios">Guardar Horarios</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_23_00_hora">23:00</string>
+    <string name="_22_00_hora">22:00</string>
+    <string name="_21_00_hora">21:00</string>
+    <string name="_20_00_hora">20:00</string>
+    <string name="_19_00_hora">19:00</string>
+    <string name="_18_00_hora">18:00</string>
+    <string name="_17_00_hora">17:00</string>
+    <string name="_16_00_hora">16:00</string>
+    <string name="_15_00_hora">15:00</string>
+    <string name="_14_00_hora">14:00</string>
+    <string name="_13_00_hora">13:00</string>
+    <string name="_12_00_hora">12:00</string>
+    <string name="_11_00_hora">11:00</string>
+    <string name="_10_00_hora">10:00</string>
+    <string name="_9_00_hora">9:00</string>
+    <string name="_8_00_hora">8:00</string>
+    <string name="_7_00_hora">7:00</string>
+    <string name="_6_00_hora">6:00</string>
 </resources>

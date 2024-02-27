@@ -3,7 +3,9 @@ package com.juandiegodiaz.appreservacancha;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,8 @@ import java.util.ArrayList;
 
 public class JuevesFragment extends Fragment implements View.OnClickListener {
 
-    private ArrayList<String> HorarioJueves = new ArrayList<>();
+    private ArrayList<String> horarioJueves = new ArrayList<>();
+    private HorariosViewModel horariosViewModel;
 
     public JuevesFragment() {
         // Constructor público vacío requerido por la documentación de Fragment.
@@ -55,6 +58,20 @@ public class JuevesFragment extends Fragment implements View.OnClickListener {
             boton.setOnClickListener(this);
         }
 
+        Button btnGuardarJueves = view.findViewById(R.id.btn_GuardarJueves);
+        btnGuardarJueves.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                guardarHorarios();
+            }
+        });
+
+        // Obtiene una instancia del ViewModel
+        horariosViewModel = new ViewModelProvider(requireActivity()).get(HorariosViewModel.class);
+
+        // Cargar los horarios guardados, si existen
+        cargarHorariosGuardados(botones);
+
         return view;
     }
 
@@ -68,17 +85,42 @@ public class JuevesFragment extends Fragment implements View.OnClickListener {
         if (button.isSelected()) {
             button.setSelected(false);
             button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#6200EE")));
-            HorarioJueves.remove(button.getText().toString());
+            String buttonText = button.getText().toString();
+            horarioJueves.remove(buttonText);
         } else {
             button.setSelected(true);
             button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00FF00")));
-            HorarioJueves.add(button.getText().toString());
+            String buttonText = button.getText().toString();
+            horarioJueves.add(buttonText);
         }
     }
 
-    // Este método se llama al hacer clic en el botón de guardar horarios en la actividad principal
+    private void guardarHorarios() {
+        // Actualiza los horarios en el ViewModel
+        horariosViewModel.setHorariosJueves(new ArrayList<>(horarioJueves));
+
+        // Puedes realizar alguna acción aquí con los horarios guardados
+        ArrayList<String> horariosGuardados = getHorariosJueves();
+        Log.d("HorariosGuardados", "Horarios Jueves Guardados: " + horariosGuardados.toString());
+    }
+
+    private void cargarHorariosGuardados(Button[] botones) {
+        // Obtén los horarios del ViewModel y configura el estado de los botones
+        ArrayList<String> horariosGuardados = horariosViewModel.getHorariosJueves();
+        for (String horario : horariosGuardados) {
+            for (Button boton : botones) {
+                if (boton.getText().toString().equals(horario)) {
+                    boton.setSelected(true);
+                    boton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00FF00")));
+                }
+            }
+        }
+        // Actualiza el array original con los horarios guardados
+        horarioJueves.clear();
+        horarioJueves.addAll(horariosGuardados);
+    }
 
     public ArrayList<String> getHorariosJueves() {
-        return HorarioJueves;
+        return horarioJueves;
     }
 }
