@@ -65,8 +65,8 @@ public class RegistroActivity extends AppCompatActivity {
 
                 if (email.isEmpty() || contraseña.isEmpty() || nombre.isEmpty() || telefono.isEmpty()) {
                     Toast.makeText(RegistroActivity.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
-                } else if (contraseña.length() < 5) {
-                    Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos 5 caracteres", Toast.LENGTH_SHORT).show();
+                } else if (contraseña.length() < 7) {
+                    Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos 7 caracteres", Toast.LENGTH_SHORT).show();
                 } else {
                     // Iniciar autenticación con el email y contraseña
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, contraseña)

@@ -15,19 +15,19 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <!-- Agrega más campos según sea necesario -->
 
     <EditText
         android:id="@+id/et_crear_Nombre_Cancha"
-        android:layout_width="408dp"
-        android:layout_height="55dp"
+        android:layout_width="379dp"
+        android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:hint="Nombre de la Cancha"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
@@ -35,7 +35,7 @@
         android:id="@+id/et_crear_usuarioCancha"
         android:layout_width="381dp"
         android:layout_height="56dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         android:hint="Usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -44,13 +44,13 @@
 
     <EditText
         android:id="@+id/et_crear_contrasñea_cancha"
-        android:layout_width="406dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="391dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
         android:hint="Contraseña"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_crear_usuarioCancha" />
 
@@ -58,20 +58,20 @@
         android:id="@+id/et_numero_contacto_cancha"
         android:layout_width="396dp"
         android:layout_height="99dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginBottom="148dp"
         android:hint="Número de Contacto"
         android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_numero_nequi_cancha"
-        android:layout_width="398dp"
-        android:layout_height="85dp"
+        android:layout_width="386dp"
+        android:layout_height="71dp"
         android:layout_marginStart="4dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="36dp"
         android:hint="Número de Nequi para Pago"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/et_numero_contacto_cancha"
