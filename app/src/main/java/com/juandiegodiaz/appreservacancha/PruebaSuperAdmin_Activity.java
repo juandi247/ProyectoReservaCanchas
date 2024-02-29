@@ -15,14 +15,18 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.common.reflect.TypeToken;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.google.gson.Gson;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PruebaSuperAdmin_Activity extends AppCompatActivity {
@@ -52,6 +56,12 @@ public class PruebaSuperAdmin_Activity extends AppCompatActivity {
                 // Llama al método para gestionar el evento de guardar horarios
                 onGuardarHorariosClick(view);
                 String nombreCancha = obtenerUsuarioCancha();
+                List<String> nombresSubcanchas = obtenerNombresSubcanchas(nombreCancha);
+
+                // Muestra los nombres de las subcanchas en el Log
+                for (int i = 0; i < nombresSubcanchas.size(); i++) {
+                    Log.d("PruebaSuperAdmin", "Subcancha " + (i + 1) + ": " + nombresSubcanchas.get(i));
+                }
 
                 // Utiliza el nombre de usuario en tu log
                 Log.d("PruebaSuperAdmin", "Usuario de la Cancha: " + nombreCancha);
@@ -61,6 +71,10 @@ public class PruebaSuperAdmin_Activity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 
     // Método llamado al presionar el botón "Guardar Horarios"
     public void onGuardarHorariosClick(View view) {
@@ -131,7 +145,6 @@ public class PruebaSuperAdmin_Activity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // Éxito al guardar los horarios en Firestore
-                        Toast.makeText(PruebaSuperAdmin_Activity.this, "-----Horarios guardados en Firestore-----", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -147,4 +160,24 @@ public class PruebaSuperAdmin_Activity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("USUARIO_CANCHAS", MODE_PRIVATE);
         return preferences.getString("nombrecancha", null);
     }
+
+
+    private List<String> obtenerNombresSubcanchas(String nombreCancha) {
+        List<String> nombresSubcanchas = new ArrayList<>();
+        SharedPreferences preferences = getSharedPreferences("SUBCANCHAS", MODE_PRIVATE);
+
+        // Recupera la cadena JSON del array almacenado en SharedPreferences
+        String arrayString = preferences.getString(nombreCancha, "");
+
+        // Convierte la cadena JSON a un array
+        Type listType = new TypeToken<ArrayList<String>>() {}.getType();
+        nombresSubcanchas = new Gson().fromJson(arrayString, listType);
+
+        return nombresSubcanchas;
+    }
+
+
+
+
+
 }
